@@ -106,6 +106,10 @@ class UploadResizeBase64
 		$activeHeight = $this->targetHeight;
 		$activeWidth =  $this->originalWidth * $activeHeight / $this->originalHeight;
 		$trim = ($this->targetWidth - $activeWidth)/2;
+		
+		        if ($this->targetWidth == 0) {
+            $this->targetWidth = $activeWidth;
+        }
 
 		$this->resizeImage = imagecreatetruecolor($this->targetWidth, $this->targetHeight);
 		imagealphablending($this->resizeImage, false);
